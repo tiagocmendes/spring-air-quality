@@ -1,2 +1,2 @@
-# air-quality-webapp
-A multi-layer web application to measure the air quality of a certain region/city, using React and Spring Boot.
+# Spring Air Quality
+Backend of a multi-layer web application to measure the air quality of a certain region/city, using Spring.
