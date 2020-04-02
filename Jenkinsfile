@@ -5,14 +5,15 @@ pipeline {
         maven 'maven_3.6.0'
     }
     stages {
-        stage('test java installation') {
+        stage('Install') {
             steps {
-                sh 'java -version'
+                sh "cd airQuality"
+                sh "mvn clean install"
             }
-        }
-        stage('test maven installation') {
-            steps {
-                sh 'mvn -version'
+            post {
+                always {
+                    junit '**/target/*-reports/TEST-*.xml'
+                }
             }
         }
     }
