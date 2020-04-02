@@ -7,7 +7,6 @@ pipeline {
     stages {
         stage('Install') {
             steps {
-                sh "airQuality"
                 sh "ls"
                 sh "mvn clean install"
             }
