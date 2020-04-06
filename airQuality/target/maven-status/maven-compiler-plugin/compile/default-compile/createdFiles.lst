@@ -1,0 +1,8 @@
+tqs/airQuality/http/AirQualityHttpClient.class
+tqs/airQuality/service/RegionService.class
+tqs/airQuality/exception/RegionNotFoundException.class
+tqs/airQuality/AirQualityApplication.class
+tqs/airQuality/http/HttpClient.class
+tqs/airQuality/controller/RegionController.class
+tqs/airQuality/repository/RegionRepository.class
+tqs/airQuality/model/Region.class
