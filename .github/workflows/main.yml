@@ -11,8 +11,6 @@ jobs:
   test:
     name: Unit Test
     runs-on: ubuntu-18.04
-    env:
-      working-directory: ./airQuality
 
     steps:
       - uses: actions/checkout@v1
@@ -22,5 +20,6 @@ jobs:
           java-version: 1.8
       - name: Maven Package
         run: mvn -B clean package -DskipTests
+        working-directory: ./airQuality
       #- name: Maven Verify
       #  run: mvn -B clean verify
