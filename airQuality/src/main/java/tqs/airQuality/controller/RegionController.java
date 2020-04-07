@@ -9,7 +9,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.http.ResponseEntity;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 import javax.validation.Valid;
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.http.ParseException;
@@ -32,11 +36,53 @@ public class RegionController {
     }
 
     @GetMapping("/api/{name}")
-    public void getFromAPI(@PathVariable(value = "name") String name) throws URISyntaxException, IOException {
+    public Region getFromAPI(@PathVariable(value = "name") String name) throws URISyntaxException, IOException {
+        System.out.println(name);
         HttpClient httpClient = new AirQualityHttpClient();
         URIBuilder uriBuilder = new URIBuilder("https://api.waqi.info/feed/" + name);
         String response = httpClient.get(uriBuilder.build().toString());
-        System.out.println("RESPONSE: " + response);
+
+        try {
+            JSONObject jsonResponse = (JSONObject) new JSONObject(response);
+
+            JSONObject data = (JSONObject) jsonResponse.get("data");
+
+
+            // City
+            JSONObject city = (JSONObject) data.get("city");
+
+            String cityName = (String) city.get("name");
+
+            JSONArray geo = new JSONArray(city.get("geo").toString());
+            Double latitude = Double.parseDouble(geo.get(0).toString());
+            Double longitude = Double.parseDouble(geo.get(1).toString());
+
+            String url = (String) city.get("url");
+
+
+            // Air Quality Indicator
+            Integer aqi = (Integer) data.get("aqi");
+
+
+
+            // Pollutants
+            String primaryPollutant = (String) data.get("dominentpol");
+            JSONObject pollutants = (JSONObject) data.get("iaqi");
+
+
+            // Time
+            JSONObject time = (JSONObject) data.get("time");
+            String timestamp = (String) time.get("s");
+            String timezone = (String) time.get("tz");
+
+            Region region = new Region(name, latitude, longitude, url, aqi, primaryPollutant, pollutants, timestamp, timezone);
+
+            return region;
+        }
+        catch (Exception e) {
+            throw new Error(e);
+        }
+
     }
 
     // Create a new Note

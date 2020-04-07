@@ -4,6 +4,16 @@ import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+import tqs.airQuality.converter.JSONObjectConverter;
+
+import java.io.IOException;
+import java.util.*;
+
 @Entity
 @Table(name = "regions")
 public class Region {
@@ -25,18 +35,10 @@ public class Region {
     private String url;
 
     @NotNull
-    private Double aqi; // Air Quality Indicator
+    private Integer aqi; // Air Quality Indicator
 
     @NotBlank
     private String primaryPollutant;
-
-    private Double pollutantH;
-    private Double pollutantNO2;
-    private Double pollutantO3;
-    private Double pollutantP;
-    private Double pollutantPM10;
-    private Double pollutantPM25;
-    private Double pollutantSO2;
 
     @NotBlank
     private String time;
@@ -44,30 +46,71 @@ public class Region {
     @NotBlank
     private String timeZone;
 
+    @NotNull
+    @Column(columnDefinition = "TEXT")
+    @Convert(converter = JSONObjectConverter.class)
+    @JsonIgnore
+    private JSONObject pollutants;
+
     /* Constructors */
 
     public Region() {
         super();
     }
 
-    public Region(Long id, String name, Double latitude, Double longitude, String url, Double aqi, String primaryPollutant, Double pollutantH, Double pollutantNO2, Double pollutantO3, Double pollutantP, Double pollutantPM10, Double pollutantPM25, Double pollutantSO2, String time, String timeZone) {
-        this.id = id;
+    public Region(String name, Double latitude, Double longitude, String url, Integer aqi, String primaryPollutant, JSONObject pollutants ,String time, String timeZone) {
         this.name = name;
         this.latitude = latitude;
         this.longitude = longitude;
         this.url = url;
         this.aqi = aqi;
         this.primaryPollutant = primaryPollutant;
-        this.pollutantH = pollutantH;
-        this.pollutantNO2 = pollutantNO2;
-        this.pollutantO3 = pollutantO3;
-        this.pollutantP = pollutantP;
-        this.pollutantPM10 = pollutantPM10;
-        this.pollutantPM25 = pollutantPM25;
-        this.pollutantSO2 = pollutantSO2;
+        this.pollutants = pollutants;
         this.time = time;
         this.timeZone = timeZone;
     }
+
+    @JsonProperty("pollutants")
+    public Map<String, Object> getAsJsonString() throws IOException, JSONException {
+        return toMap(pollutants);
+    }
+
+    public Map<String, Object> toMap(JSONObject object) throws JSONException {
+        Map<String, Object> map = new HashMap<String, Object>();
+
+        Iterator<String> keysItr = object.keys();
+        while(keysItr.hasNext()) {
+            String key = keysItr.next();
+            Object value = object.get(key);
+
+            if(value instanceof JSONArray) {
+                value = toList((JSONArray) value);
+            }
+
+            else if(value instanceof JSONObject) {
+                value = toMap((JSONObject) value);
+            }
+            map.put(key, value);
+        }
+        return map;
+    }
+
+    public List<Object> toList(JSONArray array) throws JSONException {
+        List<Object> list = new ArrayList<Object>();
+        for(int i = 0; i < array.length(); i++) {
+            Object value = array.get(i);
+            if(value instanceof JSONArray) {
+                value = toList((JSONArray) value);
+            }
+
+            else if(value instanceof JSONObject) {
+                value = toMap((JSONObject) value);
+            }
+            list.add(value);
+        }
+        return list;
+    }
+
 
     /* Getters & Setters */
     public Long getId() {
@@ -110,11 +153,11 @@ public class Region {
         this.url = url;
     }
 
-    public Double getAqi() {
+    public Integer getAqi() {
         return aqi;
     }
 
-    public void setAqi(Double aqi) {
+    public void setAqi(Integer aqi) {
         this.aqi = aqi;
     }
 
@@ -124,62 +167,6 @@ public class Region {
 
     public void setPrimaryPollutant(String primaryPollutant) {
         this.primaryPollutant = primaryPollutant;
-    }
-
-    public Double getPollutantH() {
-        return pollutantH;
-    }
-
-    public void setPollutantH(Double pollutantH) {
-        this.pollutantH = pollutantH;
-    }
-
-    public Double getPollutantNO2() {
-        return pollutantNO2;
-    }
-
-    public void setPollutantNO2(Double pollutantNO2) {
-        this.pollutantNO2 = pollutantNO2;
-    }
-
-    public Double getPollutantO3() {
-        return pollutantO3;
-    }
-
-    public void setPollutantO3(Double pollutantO3) {
-        this.pollutantO3 = pollutantO3;
-    }
-
-    public Double getPollutantP() {
-        return pollutantP;
-    }
-
-    public void setPollutantP(Double pollutantP) {
-        this.pollutantP = pollutantP;
-    }
-
-    public Double getPollutantPM10() {
-        return pollutantPM10;
-    }
-
-    public void setPollutantPM10(Double pollutantPM10) {
-        this.pollutantPM10 = pollutantPM10;
-    }
-
-    public Double getPollutantPM25() {
-        return pollutantPM25;
-    }
-
-    public void setPollutantPM25(Double pollutantPM25) {
-        this.pollutantPM25 = pollutantPM25;
-    }
-
-    public Double getPollutantSO2() {
-        return pollutantSO2;
-    }
-
-    public void setPollutantSO2(Double pollutantSO2) {
-        this.pollutantSO2 = pollutantSO2;
     }
 
     public String getTime() {
