@@ -24,6 +24,7 @@ public class RegionController {
     @Autowired
     RegionRepository regionRepository;
 
+    
     // Get All Notes
     @GetMapping("/region")
     public List<Region> getAllNotes() {
