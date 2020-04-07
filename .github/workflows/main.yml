@@ -23,59 +23,59 @@ jobs:
       #- name: Maven Verify
       #  run: mvn -B clean verify -Pintegration-test
 
-  sonar:
-    name: Test - SonarCloud Scan
-    runs-on: ubuntu-18.04
+#  sonar:
+#    name: Test - SonarCloud Scan
+#    runs-on: ubuntu-18.04
 
-    steps:
-      - uses: actions/checkout@v1
-      - name: Set up JDK 8
-        uses: actions/setup-java@v1
-        with:
-          java-version: 1.8
-      - name: SonarCloud Scan
-        run: mvn -B clean verify -Psonar -Dsonar.login=${{ secrets.SONAR_TOKEN }}
-        working-directory: ./airQuality
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+#    steps:
+#      - uses: actions/checkout@v1
+#      - name: Set up JDK 8
+#        uses: actions/setup-java@v1
+#        with:
+#          java-version: 1.8
+#      - name: SonarCloud Scan
+#        run: mvn -B clean verify -Psonar -Dsonar.login=${{ secrets.SONAR_TOKEN }}
+#        working-directory: ./airQuality
+#        env:
+#          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           
-  artifact:
-    name: Publish - GitHub Packages
-    runs-on: ubuntu-18.04
-    needs: [test, sonar]
+#  artifact:
+#    name: Publish - GitHub Packages
+#    runs-on: ubuntu-18.04
+#    needs: [test, sonar]
 
-    steps:
-      - uses: actions/checkout@v1
-      - name: Set up JDK 8
-        uses: actions/setup-java@v1
-        with:
-          java-version: 1.8
-      - name: Publish artifact on GitHub Packages
-        run: mvn -B clean deploy -DskipTests
-        working-directory: ./airQuality
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+#    steps:
+#      - uses: actions/checkout@v1
+#      - name: Set up JDK 8
+#        uses: actions/setup-java@v1
+#        with:
+#          java-version: 1.8
+#      - name: Publish artifact on GitHub Packages
+#        run: mvn -B clean deploy -DskipTests
+#        working-directory: ./airQuality
+#        env:
+#          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
 
-  docker:
-    name: Publish - Docker Hub
-    runs-on: ubuntu-18.04
-    needs: [test, sonar]
-    env:
-      REPO: ${{ secrets.DOCKER_REPO }}
+#  docker:
+#    name: Publish - Docker Hub
+#    runs-on: ubuntu-18.04
+#    needs: [test, sonar]
+#    env:
+#     REPO: ${{ secrets.DOCKER_REPO }}
 
-    steps:
-      - uses: actions/checkout@v1
-      - name: Set up JDK 8
-        uses: actions/setup-java@v1
-        with:
-          java-version: 1.8
-      - name: Login to Docker Hub
-        run: docker login -u ${{ secrets.DOCKER_USER }} -p ${{ secrets.DOCKER_PASS }}
-        working-directory: ./airQuality
-      - name: Build Docker image
-        run: docker build -t $REPO:latest -t $REPO:${GITHUB_SHA::8} .
-        working-directory: ./airQuality
-      - name: Publish Docker image
-        run: docker push $REPO
-        working-directory: ./airQuality
+#    steps:
+#      - uses: actions/checkout@v1
+#      - name: Set up JDK 8
+#        uses: actions/setup-java@v1
+#        with:
+#          java-version: 1.8
+#      - name: Login to Docker Hub
+#        run: docker login -u ${{ secrets.DOCKER_USER }} -p ${{ secrets.DOCKER_PASS }}
+#        working-directory: ./airQuality
+#      - name: Build Docker image
+#        run: docker build -t $REPO:latest -t $REPO:${GITHUB_SHA::8} .
+#        working-directory: ./airQuality
+#      - name: Publish Docker image
+#        run: docker push $REPO
+#        working-directory: ./airQuality
