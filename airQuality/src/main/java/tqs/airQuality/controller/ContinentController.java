@@ -22,11 +22,19 @@ public class ContinentController {
 
     private static long TIME_TO_LIVE = 120;
     private static long TIMER = 120;
-    private static Cache<String, Continent> regionCache = new Cache<>(TIME_TO_LIVE, TIMER);
+    private static Cache<String, List<Continent>> continentCache = new Cache<>(TIME_TO_LIVE, TIMER);
 
     @GetMapping("/continents")
     public List<Continent> getAllContinents() {
-        return continentRepository.findAll();
+
+        List<Continent> allContinents = continentCache.get("allContinents");
+
+        if(allContinents == null) {
+            allContinents = continentRepository.findAll();
+            continentCache.put("allContinents", allContinents);
+        }
+
+        return allContinents;
     }
 
     @PostMapping("/continents")
