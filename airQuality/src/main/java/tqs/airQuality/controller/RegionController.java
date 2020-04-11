@@ -35,8 +35,8 @@ public class RegionController {
         return regionRepository.findAll();
     }
 
-    @GetMapping("/api/{name}")
-    public Region getFromAPI(@PathVariable(value = "name") String name) throws URISyntaxException, IOException {
+    @GetMapping("/region/{name}")
+    public Region getRegionByName(@PathVariable(value = "name") String name) throws URISyntaxException, IOException {
         System.out.println(name);
         HttpClient httpClient = new AirQualityHttpClient();
         URIBuilder uriBuilder = new URIBuilder("https://api.waqi.info/feed/" + name);
