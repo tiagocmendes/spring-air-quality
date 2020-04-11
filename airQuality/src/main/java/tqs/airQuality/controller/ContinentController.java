@@ -13,6 +13,7 @@ import tqs.airQuality.repository.ContinentRepository;
 
 import javax.validation.Valid;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 public class ContinentController {
@@ -42,5 +43,9 @@ public class ContinentController {
         return continentRepository.save(continent);
     }
 
+    @GetMapping("/continents/cache")
+    public Map<String, Object> getCacheDetails() {
+        return continentCache.getDetails();
+    }
 
 }
