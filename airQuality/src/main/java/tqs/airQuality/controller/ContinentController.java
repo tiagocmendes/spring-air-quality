@@ -33,4 +33,6 @@ public class ContinentController {
     public Continent createContinent(@Valid @RequestBody Continent continent) {
         return continentRepository.save(continent);
     }
+
+
 }

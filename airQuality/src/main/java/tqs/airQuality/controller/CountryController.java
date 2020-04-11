@@ -7,10 +7,13 @@ import tqs.airQuality.model.Continent;
 import tqs.airQuality.model.Country;
 import tqs.airQuality.model.Region;
 import tqs.airQuality.repository.CountryRepository;
+import tqs.airQuality.service.RegionService;
 
 import javax.validation.Valid;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 public class CountryController {
@@ -20,15 +23,15 @@ public class CountryController {
 
     private static long TIME_TO_LIVE = 120;
     private static long TIMER = 120;
-    private static Cache<String, List<Country>> regionCache = new Cache<>(TIME_TO_LIVE, TIMER);
+    private static Cache<String, List<Country>> countryCache = new Cache<>(TIME_TO_LIVE, TIMER);
 
     @GetMapping("/countries")
     public List<Country> getAllCountries() {
-        List<Country> allCountries = regionCache.get("allCountries");
+        List<Country> allCountries = countryCache.get("allCountries");
 
         if(allCountries == null) {
             allCountries = countryRepository.findAll();
-            regionCache.put("allCountries", allCountries);
+            countryCache.put("allCountries", allCountries);
         }
 
         return allCountries;
@@ -37,8 +40,8 @@ public class CountryController {
     @GetMapping("/countries/{continent}")
     public List<Country> getCountriesByContinent(@PathVariable(value = "continent") String continent) {
 
-        List<Country> countriesByContinent = regionCache.get("countriesByContinent");
-        
+        List<Country> countriesByContinent = countryCache.get("countriesByContinent");
+
         if(countriesByContinent == null) {
             List<Country> countries = countryRepository.findAll();
 
@@ -49,7 +52,7 @@ public class CountryController {
                 }
             }
 
-            regionCache.put("countriesByContinent", countriesByContinent);
+            countryCache.put("countriesByContinent", countriesByContinent);
         }
 
         return countriesByContinent;
@@ -58,5 +61,10 @@ public class CountryController {
     @PostMapping("/countries")
     public List<Country> createCountry(@Valid @RequestBody List<Country> countries) {
         return countryRepository.saveAll(countries);
+    }
+
+    @GetMapping("/countries/cache")
+    public Map<String, Object> getCacheDetails() {
+        return countryCache.getDetails();
     }
 }

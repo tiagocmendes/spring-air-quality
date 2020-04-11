@@ -99,16 +99,6 @@ public class RegionService {
     }
 
     public static Map<String, Object> getCacheDetails() {
-
-        Map<String, Object> response = new HashMap<>();
-
-        response.put("hits", regionCache.getHits());
-        response.put("misses", regionCache.getMisses());
-        response.put("requests", regionCache.getRequests());
-        response.put("timeToLive", regionCache.getTimeToLive());
-        response.put("timer", regionCache.getTimer());
-        response.put("data", regionCache.getData());
-
-        return response;
+        return regionCache.getDetails();
     }
 }

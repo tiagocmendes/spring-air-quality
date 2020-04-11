@@ -138,4 +138,17 @@ public class Cache<K, T> {
         return data;
     }
 
+    public Map<String, Object> getDetails() {
+        Map<String, Object> details = new HashMap<>();
+
+        details.put("hits", getHits());
+        details.put("misses", getMisses());
+        details.put("requests", getRequests());
+        details.put("timeToLive", getTimeToLive());
+        details.put("timer", getTimer());
+        details.put("data", getData());
+
+        return details;
+    }
+
 }
