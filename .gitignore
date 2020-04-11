@@ -1,3 +1,9 @@
+.idea/
+.classpath
+.vscode/
+.settings/
+*.iml
+
 # Logs
 logs
 *.log
