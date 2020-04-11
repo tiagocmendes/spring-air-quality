@@ -10,7 +10,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.http.ResponseEntity;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -25,13 +27,22 @@ public class RegionController {
 
 
     @GetMapping("/regions/{name}")
-    public Region getRegionByName(@PathVariable(value = "name") String name) throws IOException, URISyntaxException {
-        return RegionService.getRegionByName(name);
+    public List<Region> getRegionByName(@PathVariable(value = "name") String name) throws IOException, URISyntaxException {
+        List<Region> regionList = new ArrayList<>();
+        Region region = RegionService.getRegionByName(name);
+        if(region != null)
+            regionList.add(region);
+        return regionList;
     }
 
 
     @GetMapping("/here")
-    public Region getRegionByCurrentLocation() throws IOException, URISyntaxException {
-        return RegionService.getRegionByCurrentLocation();
+    public List<Region> getRegionByCurrentLocation(HttpServletRequest request) throws IOException, URISyntaxException {
+         // System.out.println(request.getRemoteAddr());
+        List<Region> regionList = new ArrayList<>();
+        Region region = RegionService.getRegionByCurrentLocation();
+        if(region != null)
+            regionList.add(region);
+        return regionList;
     }
 }
