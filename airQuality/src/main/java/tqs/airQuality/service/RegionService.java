@@ -20,7 +20,9 @@ import java.util.Map;
 
 public class RegionService {
 
-    private static Cache<String, Region> regionCache = new Cache<>(60, 60);
+    private static long TIME_TO_LIVE = 120;
+    private static long TIMER = 120;
+    private static Cache<String, Region> regionCache = new Cache<>(TIME_TO_LIVE, TIMER);
 
     public static Region getResponse(String uri) throws IOException, URISyntaxException {
         HttpClient httpClient = new AirQualityHttpClient();
