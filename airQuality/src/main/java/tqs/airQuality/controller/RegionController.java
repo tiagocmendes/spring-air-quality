@@ -28,5 +28,10 @@ public class RegionController {
     public Region getRegionByName(@PathVariable(value = "name") String name) throws IOException, URISyntaxException {
         return RegionService.getRegionByName(name);
     }
-    
+
+
+    @GetMapping("/here")
+    public Region getRegionByCurrentLocation() throws IOException, URISyntaxException {
+        return RegionService.getRegionByCurrentLocation();
+    }
 }

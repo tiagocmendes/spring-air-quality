@@ -16,9 +16,9 @@ import java.net.URISyntaxException;
 
 public class RegionService {
 
-    public static Region getRegionByName(String name) throws IOException, URISyntaxException {
+    public static Region getResponse(String uri) throws IOException, URISyntaxException {
         HttpClient httpClient = new AirQualityHttpClient();
-        URIBuilder uriBuilder = new URIBuilder("https://api.waqi.info/feed/" + name);
+        URIBuilder uriBuilder = new URIBuilder(uri);
         String response = httpClient.get(uriBuilder.build().toString());
         try {
             JSONObject jsonResponse = (JSONObject) new JSONObject(response);
@@ -52,12 +52,20 @@ public class RegionService {
             String timestamp = (String) time.get("s");
             String timezone = (String) time.get("tz");
 
-            Region region = new Region(name, latitude, longitude, url, aqi, primaryPollutant, pollutants, timestamp, timezone);
+            Region region = new Region(cityName, latitude, longitude, url, aqi, primaryPollutant, pollutants, timestamp, timezone);
 
             return region;
         }
         catch (Exception e) {
             return null;
         }
+    }
+
+    public static Region getRegionByName(String name) throws IOException, URISyntaxException {
+        return getResponse("https://api.waqi.info/feed/" + name);
+    }
+
+    public static Region getRegionByCurrentLocation() throws IOException, URISyntaxException {
+        return getResponse("https://api.waqi.info/feed/here");
     }
 }
