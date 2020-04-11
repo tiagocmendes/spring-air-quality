@@ -53,7 +53,6 @@ public class Cache<K, T> {
 
     public void put(K key, T value) {
         synchronized (data) {
-            System.out.println("Putting new item!");
             data.put(key, new CacheObject(value));
         }
     }
@@ -67,7 +66,6 @@ public class Cache<K, T> {
                 this.misses++;
                 return null;
             }
-            System.out.println("Retrieving cached item!");
             this.hits++;
             cacheObject.lastAccessed = System.currentTimeMillis();
             return cacheObject.value;
