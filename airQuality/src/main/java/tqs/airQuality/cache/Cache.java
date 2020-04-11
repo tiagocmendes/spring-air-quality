@@ -10,6 +10,9 @@ public class Cache<K, T> {
 
     private long timeToLive;
     private Map<K, CacheObject> data;
+    private int requests;
+    private int hits;
+    private int misses;
 
     protected class CacheObject {
         public long lastAccessed = System.currentTimeMillis();
@@ -42,6 +45,36 @@ public class Cache<K, T> {
                 }
             }
         });
+        t.setDaemon(true);
+        t.start();
+    }
+
+    public void put(K key, T value) {
+        synchronized (data) {
+            data.put(key, new CacheObject(value));
+        }
+    }
+
+    public T get(K key) {
+        synchronized (data) {
+            this.requests++;
+
+            CacheObject cacheObject = data.get(key);
+            if(cacheObject == null) {
+                this.misses++;
+                return null;
+            }
+
+            this.hits++;
+            cacheObject.lastAccessed = System.currentTimeMillis();
+            return cacheObject.value;
+        }
+    }
+
+    public int size() {
+        synchronized (data) {
+            return data.size();
+        }
     }
 
     public void remove(String key) {
