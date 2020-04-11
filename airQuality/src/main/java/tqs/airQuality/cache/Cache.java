@@ -9,6 +9,7 @@ import java.util.HashMap;
 public class Cache<K, T> {
 
     private long timeToLive;
+    private long timer;
     private Map<K, CacheObject> data;
     private int requests;
     private int hits;
@@ -30,6 +31,7 @@ public class Cache<K, T> {
             throw new IllegalArgumentException("Time to live and timer must be greater than 0!");
 
         this.timeToLive = timeToLive * 1000;
+        this.timer = timer * 1000;
         this.data = new HashMap<>();
 
 
@@ -112,5 +114,28 @@ public class Cache<K, T> {
     }
 
 
+    public int getRequests() {
+        return requests;
+    }
+
+    public int getHits() {
+        return hits;
+    }
+
+    public int getMisses() {
+        return misses;
+    }
+
+    public long getTimeToLive() {
+        return timeToLive;
+    }
+
+    public long getTimer() {
+        return timer;
+    }
+
+    public Map<K, CacheObject> getData() {
+        return data;
+    }
 
 }

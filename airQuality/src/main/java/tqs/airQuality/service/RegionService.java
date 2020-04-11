@@ -14,6 +14,9 @@ import org.apache.http.client.utils.URIBuilder;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
+import java.util.Calendar;
+import java.util.HashMap;
+import java.util.Map;
 
 public class RegionService {
 
@@ -70,13 +73,40 @@ public class RegionService {
 
         if(region == null) {
             region = getResponse("https://api.waqi.info/feed/" + name);
-            regionCache.put(name, region);
+
+            if(region != null)
+                regionCache.put(name, region);
         }
 
         return region;
     }
 
     public static Region getRegionByCurrentLocation() throws IOException, URISyntaxException {
-        return getResponse("https://api.waqi.info/feed/here");
+
+        String currentLocation = "currentLocation";
+        Region region = regionCache.get(currentLocation);
+
+        if(region == null) {
+            region = getResponse("https://api.waqi.info/feed/here");
+
+            if(region != null)
+                regionCache.put(currentLocation, region);
+        }
+
+        return region;
+    }
+
+    public static Map<String, Object> getCacheDetails() {
+
+        Map<String, Object> response = new HashMap<>();
+
+        response.put("hits", regionCache.getHits());
+        response.put("misses", regionCache.getMisses());
+        response.put("requests", regionCache.getRequests());
+        response.put("timeToLive", regionCache.getTimeToLive());
+        response.put("timer", regionCache.getTimer());
+        response.put("data", regionCache.getData());
+
+        return response;
     }
 }
