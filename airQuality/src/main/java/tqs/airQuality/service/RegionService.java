@@ -1,5 +1,6 @@
 package tqs.airQuality.service;
 
+import tqs.airQuality.cache.Cache;
 import tqs.airQuality.http.AirQualityHttpClient;
 import tqs.airQuality.http.HttpClient;
 import tqs.airQuality.model.Region;
@@ -15,6 +16,8 @@ import java.io.IOException;
 import java.net.URISyntaxException;
 
 public class RegionService {
+
+    private static Cache<String, Region> regionCache = new Cache<>(60, 60);
 
     public static Region getResponse(String uri) throws IOException, URISyntaxException {
         HttpClient httpClient = new AirQualityHttpClient();
@@ -62,7 +65,15 @@ public class RegionService {
     }
 
     public static Region getRegionByName(String name) throws IOException, URISyntaxException {
-        return getResponse("https://api.waqi.info/feed/" + name);
+
+        Region region = regionCache.get(name);
+
+        if(region == null) {
+            region = getResponse("https://api.waqi.info/feed/" + name);
+            regionCache.put(name, region);
+        }
+
+        return region;
     }
 
     public static Region getRegionByCurrentLocation() throws IOException, URISyntaxException {
