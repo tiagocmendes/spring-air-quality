@@ -58,6 +58,10 @@ public class Region {
         super();
     }
 
+    public Region(String name) {
+        this.name = name + " not found!";
+    }
+
     public Region(String name, Double latitude, Double longitude, String url, Integer aqi, String primaryPollutant, JSONObject pollutants ,String time, String timeZone) {
         this.name = name;
         this.latitude = latitude;
