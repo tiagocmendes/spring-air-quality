@@ -1,5 +1,8 @@
 package tqs.airQuality.controller;
 
+import jdk.nashorn.api.scripting.JSObject;
+import org.json.JSONArray;
+import org.json.JSONObject;
 import tqs.airQuality.exception.RegionNotFoundException;
 import tqs.airQuality.model.Region;
 import tqs.airQuality.repository.RegionRepository;
@@ -18,6 +21,7 @@ import java.util.List;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
+import java.util.Map;
 
 @RestController
 public class RegionController {
@@ -44,5 +48,10 @@ public class RegionController {
         if(region != null)
             regionList.add(region);
         return regionList;
+    }
+
+    @GetMapping("/regions/cache")
+    public Map<String, Object> getCacheDetails() {
+        return RegionService.getCacheDetails();
     }
 }

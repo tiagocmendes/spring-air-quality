@@ -1,5 +1,6 @@
 package tqs.airQuality.service;
 
+import tqs.airQuality.cache.Cache;
 import tqs.airQuality.http.AirQualityHttpClient;
 import tqs.airQuality.http.HttpClient;
 import tqs.airQuality.model.Region;
@@ -13,8 +14,15 @@ import org.apache.http.client.utils.URIBuilder;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
+import java.util.Calendar;
+import java.util.HashMap;
+import java.util.Map;
 
 public class RegionService {
+
+    private static long TIME_TO_LIVE = 120;
+    private static long TIMER = 120;
+    private static Cache<String, Region> regionCache = new Cache<>(TIME_TO_LIVE, TIMER);
 
     public static Region getResponse(String uri) throws IOException, URISyntaxException {
         HttpClient httpClient = new AirQualityHttpClient();
@@ -62,10 +70,35 @@ public class RegionService {
     }
 
     public static Region getRegionByName(String name) throws IOException, URISyntaxException {
-        return getResponse("https://api.waqi.info/feed/" + name);
+
+        Region region = regionCache.get(name);
+
+        if(region == null) {
+            region = getResponse("https://api.waqi.info/feed/" + name);
+
+            if(region != null)
+                regionCache.put(name, region);
+        }
+
+        return region;
     }
 
     public static Region getRegionByCurrentLocation() throws IOException, URISyntaxException {
-        return getResponse("https://api.waqi.info/feed/here");
+
+        String currentLocation = "currentLocation";
+        Region region = regionCache.get(currentLocation);
+
+        if(region == null) {
+            region = getResponse("https://api.waqi.info/feed/here");
+
+            if(region != null)
+                regionCache.put(currentLocation, region);
+        }
+
+        return region;
+    }
+
+    public static Map<String, Object> getCacheDetails() {
+        return regionCache.getDetails();
     }
 }
