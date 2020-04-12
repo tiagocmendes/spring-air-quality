@@ -40,7 +40,7 @@ public class CountryController {
     @GetMapping("/countries/{continent}")
     public List<Country> getCountriesByContinent(@PathVariable(value = "continent") String continent) {
 
-        List<Country> countriesByContinent = countryCache.get("countriesByContinent");
+        List<Country> countriesByContinent = countryCache.get(continent);
 
         if(countriesByContinent == null) {
             List<Country> countries = countryRepository.findAll();
@@ -52,7 +52,7 @@ public class CountryController {
                 }
             }
 
-            countryCache.put("countriesByContinent", countriesByContinent);
+            countryCache.put(continent, countriesByContinent);
         }
 
         return countriesByContinent;
