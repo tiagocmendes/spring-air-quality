@@ -19,7 +19,7 @@ public class AirQualityApplication {
 			@Override
 			public void addCorsMappings(CorsRegistry registry) {
 				registry.addMapping("/**")
-						.allowedMethods("DELETE", "POST", "PUT", "GET");
+						.allowedMethods("POST", "GET");
 			}
 		};
 	}
