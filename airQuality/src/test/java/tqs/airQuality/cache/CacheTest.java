@@ -3,7 +3,6 @@ package tqs.airQuality.cache;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.function.Executable;
-import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.*;
 
