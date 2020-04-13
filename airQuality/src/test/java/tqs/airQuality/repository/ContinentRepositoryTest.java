@@ -8,26 +8,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
-import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import tqs.airQuality.model.Continent;
 
-import javax.sql.DataSource;
 import java.util.ArrayList;
 import java.util.List;
-
 
 @AutoConfigureTestDatabase(replace=AutoConfigureTestDatabase.Replace.NONE)
 @ExtendWith(SpringExtension.class)
 @DataJpaTest
 public class ContinentRepositoryTest {
 
-    @Autowired
-    private DataSource dataSource;
-
-    @Autowired
-    private JdbcTemplate jdbcTemplate;
 
     @Autowired
     private TestEntityManager entityManager;
