@@ -113,6 +113,16 @@ public class Cache<K, T> {
         }
     }
 
+    public void clean() {
+        synchronized (data) {
+            data = new HashMap<>();
+            requests = 0;
+            hits = 0;
+            misses = 0;
+            lastRefresh = System.currentTimeMillis();
+        }
+    }
+
 
     public int getRequests() {
         return requests;
