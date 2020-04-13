@@ -49,7 +49,7 @@ public class CountryRepositoryTest {
     }
 
     @Test
-    public void whenFindById_thenReturnContinent() {
+    public void whenFindById_thenReturnCountry() {
         Country country = new Country("Country1", "Continent1", "Flag1");
         entityManager.persistAndFlush(country);
 
@@ -64,7 +64,7 @@ public class CountryRepositoryTest {
     }
 
     @Test
-    public void givenSetOfContinents_whenFindAll_ThenReturnAllContinents() {
+    public void givenSetOfCountries_whenFindAll_ThenReturnAllCountries() {
         List<Country> insertedCountries = new ArrayList<>();
         insertedCountries.add(new Country("Country1", "Continent1", "Flag1"));
         insertedCountries.add(new Country("Country2", "Continent2", "Flag2"));;
@@ -90,6 +90,5 @@ public class CountryRepositoryTest {
         for(Country c : insertedCountries)
             assertEquals(true, allCountries.contains(c));
     }
-
 
 }
