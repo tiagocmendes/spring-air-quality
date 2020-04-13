@@ -14,6 +14,7 @@ public class Cache<K, T> {
     private int requests;
     private int hits;
     private int misses;
+    private long lastRefresh = System.currentTimeMillis();
 
     protected class CacheObject {
         public long lastAccessed = System.currentTimeMillis();
@@ -87,6 +88,7 @@ public class Cache<K, T> {
     public void refresh() {
 
         long now = System.currentTimeMillis();
+        this.lastRefresh = now;
 
         List<K> expiredObjects = new ArrayList<>();
 
@@ -132,6 +134,10 @@ public class Cache<K, T> {
         return timer;
     }
 
+    public long getLastRefresh() {
+        return lastRefresh;
+    }
+
     public Map<K, CacheObject> getData() {
         return data;
     }
@@ -142,8 +148,9 @@ public class Cache<K, T> {
         details.put("hits", getHits());
         details.put("misses", getMisses());
         details.put("requests", getRequests());
-        details.put("timeToLive", getTimeToLive());
-        details.put("timer", getTimer());
+        details.put("timeToLive", getTimeToLive() / 1000);
+        details.put("timer", getTimer() / 1000);
+        details.put("lastRefresh", getLastRefresh());
         details.put("data", getData());
 
         return details;
