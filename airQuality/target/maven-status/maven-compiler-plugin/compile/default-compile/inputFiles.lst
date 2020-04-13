@@ -1,8 +1,0 @@
-/home/tiagocm/Documents/spring-air-quality/src/main/java/tqs/airQuality/model/Region.java
-/home/tiagocm/Documents/spring-air-quality/src/main/java/tqs/airQuality/exception/RegionNotFoundException.java
-/home/tiagocm/Documents/spring-air-quality/src/main/java/tqs/airQuality/AirQualityApplication.java
-/home/tiagocm/Documents/spring-air-quality/src/main/java/tqs/airQuality/service/RegionService.java
-/home/tiagocm/Documents/spring-air-quality/src/main/java/tqs/airQuality/http/HttpClient.java
-/home/tiagocm/Documents/spring-air-quality/src/main/java/tqs/airQuality/repository/RegionRepository.java
-/home/tiagocm/Documents/spring-air-quality/src/main/java/tqs/airQuality/controller/RegionController.java
-/home/tiagocm/Documents/spring-air-quality/src/main/java/tqs/airQuality/http/AirQualityHttpClient.java

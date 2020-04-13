@@ -25,6 +25,12 @@ public class Country {
 
     public Country() { super(); }
 
+    public Country(@NotBlank String name, @NotBlank String continent, @NotBlank String flag) {
+        this.name = name;
+        this.continent = continent;
+        this.flag = flag;
+    }
+
     public Country(Long id, @NotBlank String name, @NotBlank String continent, @NotBlank String flag) {
         this.id = id;
         this.name = name;
