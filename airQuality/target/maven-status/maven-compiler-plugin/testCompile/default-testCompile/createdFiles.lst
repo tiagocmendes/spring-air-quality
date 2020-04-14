@@ -3,6 +3,7 @@ tqs/airQuality/AirQualityApplicationTests.class
 tqs/airQuality/controller/RegionControllerTest.class
 tqs/airQuality/controller/ContinentControllerTest.class
 tqs/airQuality/repository/ContinentRepositoryTest.class
+tqs/airQuality/controller/CountryControllerTest.class
 tqs/airQuality/cache/CacheTest$1.class
 tqs/airQuality/repository/RegionRepositoryTest.class
 tqs/airQuality/cache/CacheTest.class

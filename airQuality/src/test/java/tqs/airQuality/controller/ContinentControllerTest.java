@@ -44,10 +44,20 @@ public class ContinentControllerTest {
     }
 
     @Test
-    public void getAllContinentsNotInCache() {
+    public void whenEmptyTable_getAllContinentsTest() {
         List<Continent> allContinents = new ArrayList<>();
         Mockito.when(continentService.getAllContinents()).thenReturn(allContinents);
         assertEquals(continentController.getAllContinents(), allContinents);
+        Mockito.verify(continentService, Mockito.times(1)).getAllContinents();
+    }
+
+    @Test
+    public void whenNotEmptyTable_getAllContinentsTest() {
+        List<Continent> allContinents = new ArrayList<>();
+        allContinents.add(c1);
+        allContinents.add(c2);
+        Mockito.when(continentService.getAllContinents()).thenReturn(allContinents);
+        assertEquals(allContinents, continentController.getAllContinents());
         Mockito.verify(continentService, Mockito.times(1)).getAllContinents();
     }
 
