@@ -22,6 +22,7 @@ jobs:
         working-directory: ./airQuality
       - name: Maven Verify
         run: mvn -B clean verify -Pintegration-test
+        working-directory: ./airQuality
 
 #  sonar:
 #    name: Test - SonarCloud Scan
