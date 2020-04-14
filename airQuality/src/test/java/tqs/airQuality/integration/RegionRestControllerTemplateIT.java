@@ -32,10 +32,6 @@ public class RegionRestControllerTemplateIT {
     private static Region r2;
     private static Region r3;
 
-    private int requests;
-    private int hits;
-    private int misses;
-
     @LocalServerPort
     private int port;
 
