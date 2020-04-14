@@ -67,12 +67,5 @@ public class CountryServiceTest {
         assertEquals(Arrays.asList(c1,c2), countryService.getCountriesByContinent("ContinentA"));
         Mockito.verify(countryRepository, Mockito.times(1)).findAll();
     }
-
-    @Test
-    public void findCountriesByName_WhenNoRecordsTest() throws IOException {
-        Mockito.when(countryRepository.findAll()).thenReturn(Arrays.asList());
-        assertEquals(0, countryService.getCountriesByContinent("ContinentA").size());
-        assertEquals(Arrays.asList(), countryService.getCountriesByContinent("ContinentA"));
-        Mockito.verify(countryRepository, Mockito.times(2)).findAll();
-    }
+    
 }
