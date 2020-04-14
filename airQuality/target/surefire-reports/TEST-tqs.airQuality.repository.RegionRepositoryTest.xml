@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="tqs.airQuality.repository.RegionRepositoryTest" time="34.273" tests="6" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="tqs.airQuality.repository.RegionRepositoryTest" time="2.248" tests="6" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
     <property name="sun.boot.library.path" value="/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/amd64"/>
@@ -62,10 +62,10 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="sun.cpu.isalist" value=""/>
   </properties>
-  <testcase name="whenInvalidName_thenReturnNull" classname="tqs.airQuality.repository.RegionRepositoryTest" time="1.526"/>
-  <testcase name="whenInvalidId_thenReturnNull" classname="tqs.airQuality.repository.RegionRepositoryTest" time="0.136"/>
-  <testcase name="injectedComponentAreNotNullTest" classname="tqs.airQuality.repository.RegionRepositoryTest" time="0.068"/>
-  <testcase name="givenSetOfCountries_whenFindAll_ThenReturnAllRegions" classname="tqs.airQuality.repository.RegionRepositoryTest" time="0.849"/>
-  <testcase name="whenFindById_thenReturnRegion" classname="tqs.airQuality.repository.RegionRepositoryTest" time="0.113"/>
-  <testcase name="whenFindByName_thenReturnRegion" classname="tqs.airQuality.repository.RegionRepositoryTest" time="0.088"/>
+  <testcase name="whenInvalidName_thenReturnNull" classname="tqs.airQuality.repository.RegionRepositoryTest" time="0.299"/>
+  <testcase name="whenInvalidId_thenReturnNull" classname="tqs.airQuality.repository.RegionRepositoryTest" time="0.125"/>
+  <testcase name="injectedComponentAreNotNullTest" classname="tqs.airQuality.repository.RegionRepositoryTest" time="0.049"/>
+  <testcase name="givenSetOfCountries_whenFindAll_ThenReturnAllRegions" classname="tqs.airQuality.repository.RegionRepositoryTest" time="0.375"/>
+  <testcase name="whenFindById_thenReturnRegion" classname="tqs.airQuality.repository.RegionRepositoryTest" time="0.06"/>
+  <testcase name="whenFindByName_thenReturnRegion" classname="tqs.airQuality.repository.RegionRepositoryTest" time="0.104"/>
 </testsuite>

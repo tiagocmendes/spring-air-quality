@@ -1,5 +1,6 @@
 tqs/airQuality/repository/CountryRepositoryTest.class
 tqs/airQuality/AirQualityApplicationTests.class
+tqs/airQuality/service/ContinentServiceTest.class
 tqs/airQuality/controller/RegionControllerTest.class
 tqs/airQuality/controller/ContinentControllerTest.class
 tqs/airQuality/repository/ContinentRepositoryTest.class

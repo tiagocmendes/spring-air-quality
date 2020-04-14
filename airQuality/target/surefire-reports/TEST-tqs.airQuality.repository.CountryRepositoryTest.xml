@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="tqs.airQuality.repository.CountryRepositoryTest" time="1.196" tests="6" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="tqs.airQuality.repository.CountryRepositoryTest" time="0.477" tests="6" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
     <property name="sun.boot.library.path" value="/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/amd64"/>
@@ -62,10 +62,10 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="sun.cpu.isalist" value=""/>
   </properties>
-  <testcase name="whenInvalidName_thenReturnNull" classname="tqs.airQuality.repository.CountryRepositoryTest" time="0.104"/>
-  <testcase name="whenInvalidId_thenReturnNull" classname="tqs.airQuality.repository.CountryRepositoryTest" time="0.166"/>
-  <testcase name="whenFindByName_thenReturnCountry" classname="tqs.airQuality.repository.CountryRepositoryTest" time="0.181"/>
-  <testcase name="injectedComponentAreNotNullTest" classname="tqs.airQuality.repository.CountryRepositoryTest" time="0.102"/>
-  <testcase name="givenSetOfCountries_whenFindAll_ThenReturnAllCountries" classname="tqs.airQuality.repository.CountryRepositoryTest" time="0.312"/>
-  <testcase name="whenFindById_thenReturnCountry" classname="tqs.airQuality.repository.CountryRepositoryTest" time="0.111"/>
+  <testcase name="whenInvalidName_thenReturnNull" classname="tqs.airQuality.repository.CountryRepositoryTest" time="0.066"/>
+  <testcase name="whenInvalidId_thenReturnNull" classname="tqs.airQuality.repository.CountryRepositoryTest" time="0.034"/>
+  <testcase name="whenFindByName_thenReturnCountry" classname="tqs.airQuality.repository.CountryRepositoryTest" time="0.113"/>
+  <testcase name="injectedComponentAreNotNullTest" classname="tqs.airQuality.repository.CountryRepositoryTest" time="0.044"/>
+  <testcase name="givenSetOfCountries_whenFindAll_ThenReturnAllCountries" classname="tqs.airQuality.repository.CountryRepositoryTest" time="0.164"/>
+  <testcase name="whenFindById_thenReturnCountry" classname="tqs.airQuality.repository.CountryRepositoryTest" time="0.017"/>
 </testsuite>

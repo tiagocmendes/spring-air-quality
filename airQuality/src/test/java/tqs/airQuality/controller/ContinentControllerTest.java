@@ -62,7 +62,7 @@ public class ContinentControllerTest {
     }
 
     @Test
-    void createContinent() {
+    public void createContinent() {
         continentController.createContinent(c1);
         Mockito.verify(continentService, Mockito.times(1)).createContinent(c1);
     }
