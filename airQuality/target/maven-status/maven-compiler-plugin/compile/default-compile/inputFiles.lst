@@ -9,7 +9,9 @@
 /home/tiagocm/Documents/spring-air-quality/airQuality/src/main/java/tqs/airQuality/repository/ContinentRepository.java
 /home/tiagocm/Documents/spring-air-quality/airQuality/src/main/java/tqs/airQuality/converter/JSONObjectConverter.java
 /home/tiagocm/Documents/spring-air-quality/airQuality/src/main/java/tqs/airQuality/http/HttpClient.java
+/home/tiagocm/Documents/spring-air-quality/airQuality/src/main/java/tqs/airQuality/service/ContinentService.java
 /home/tiagocm/Documents/spring-air-quality/airQuality/src/main/java/tqs/airQuality/service/RegionService.java
+/home/tiagocm/Documents/spring-air-quality/airQuality/src/main/java/tqs/airQuality/service/CountryService.java
 /home/tiagocm/Documents/spring-air-quality/airQuality/src/main/java/tqs/airQuality/repository/CountryRepository.java
 /home/tiagocm/Documents/spring-air-quality/airQuality/src/main/java/tqs/airQuality/controller/RegionController.java
 /home/tiagocm/Documents/spring-air-quality/airQuality/src/main/java/tqs/airQuality/model/Region.java
