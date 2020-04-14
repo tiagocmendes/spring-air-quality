@@ -15,6 +15,7 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 import tqs.airQuality.model.Country;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -40,7 +41,6 @@ public class CountryRestControllerTemplateIT {
     public static void init() {
         c1 = new Country("Country1", "ContinentA", "Flag1");
         c2 = new Country("Country2", "ContinentA", "Flag2");
-        c3 = new Country("Country3", "ContinentB", "Flag3");
     }
 
     @Test
@@ -69,6 +69,19 @@ public class CountryRestControllerTemplateIT {
         assertNotEquals(null, response.getBody());
         assertEquals(ArrayList.class, response.getBody().getClass());
         assertEquals(0, response.getBody().size());
+    }
+
+    @Test
+    public void createCountriesTestIT() {
+
+        ResponseEntity<ArrayList> postResponse = this.restTemplate.postForEntity("http://127.0.0.1:" + port + "/countries", Arrays.asList(c1,c2), ArrayList.class);
+        assertEquals(HttpStatus.OK, postResponse.getStatusCode());
+        assertNotEquals(null, postResponse.getBody());
+        assertEquals(ArrayList.class, postResponse.getBody().getClass());
+        Map<Object, Object>  firstCountry = (LinkedHashMap) postResponse.getBody().get(0);
+        Map<Object, Object>  secondCountry = (LinkedHashMap) postResponse.getBody().get(1);
+        assertEquals(c1.getName(), firstCountry.get("name"));
+        assertEquals(c2.getName(), secondCountry.get("name"));
     }
 
 }

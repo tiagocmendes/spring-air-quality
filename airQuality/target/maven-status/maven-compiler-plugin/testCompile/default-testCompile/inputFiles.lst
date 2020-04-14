@@ -2,11 +2,13 @@
 /home/tiagocm/Documents/spring-air-quality/airQuality/src/test/java/tqs/airQuality/service/CountryServiceTest.java
 /home/tiagocm/Documents/spring-air-quality/airQuality/src/test/java/tqs/airQuality/integration/RegionRestControllerTemplateIT.java
 /home/tiagocm/Documents/spring-air-quality/airQuality/src/test/java/tqs/airQuality/repository/ContinentRepositoryTest.java
-/home/tiagocm/Documents/spring-air-quality/airQuality/src/test/java/tqs/airQuality/controller/RegionControllerTest.java
-/home/tiagocm/Documents/spring-air-quality/airQuality/src/test/java/tqs/airQuality/controller/ContinentControllerTest.java
 /home/tiagocm/Documents/spring-air-quality/airQuality/src/test/java/tqs/airQuality/controller/CountryControllerTest.java
 /home/tiagocm/Documents/spring-air-quality/airQuality/src/test/java/tqs/airQuality/service/RegionServiceTest.java
+/home/tiagocm/Documents/spring-air-quality/airQuality/src/test/java/tqs/airQuality/AirQualityApplicationTests.java
+/home/tiagocm/Documents/spring-air-quality/airQuality/src/test/java/tqs/airQuality/integration/CountryRestControllerTemplateIT.java
+/home/tiagocm/Documents/spring-air-quality/airQuality/src/test/java/tqs/airQuality/controller/RegionControllerTest.java
+/home/tiagocm/Documents/spring-air-quality/airQuality/src/test/java/tqs/airQuality/controller/ContinentControllerTest.java
 /home/tiagocm/Documents/spring-air-quality/airQuality/src/test/java/tqs/airQuality/repository/CountryRepositoryTest.java
 /home/tiagocm/Documents/spring-air-quality/airQuality/src/test/java/tqs/airQuality/repository/RegionRepositoryTest.java
-/home/tiagocm/Documents/spring-air-quality/airQuality/src/test/java/tqs/airQuality/AirQualityApplicationTests.java
 /home/tiagocm/Documents/spring-air-quality/airQuality/src/test/java/tqs/airQuality/cache/CacheTest.java
+/home/tiagocm/Documents/spring-air-quality/airQuality/src/test/java/tqs/airQuality/integration/ContinentRestControllerTemplateIT.java

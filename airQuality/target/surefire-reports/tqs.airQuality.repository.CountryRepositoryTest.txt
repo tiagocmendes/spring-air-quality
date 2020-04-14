@@ -1,4 +1,10 @@
 -------------------------------------------------------------------------------
 Test set: tqs.airQuality.repository.CountryRepositoryTest
 -------------------------------------------------------------------------------
-Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.536 s - in tqs.airQuality.repository.CountryRepositoryTest
+Tests run: 6, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 1.185 s <<< FAILURE! - in tqs.airQuality.repository.CountryRepositoryTest
+whenFindByName_thenReturnCountry  Time elapsed: 0.252 s  <<< ERROR!
+org.springframework.dao.IncorrectResultSizeDataAccessException: query did not return a unique result: 6; nested exception is javax.persistence.NonUniqueResultException: query did not return a unique result: 6
+	at tqs.airQuality.repository.CountryRepositoryTest.whenFindByName_thenReturnCountry(CountryRepositoryTest.java:41)
+Caused by: javax.persistence.NonUniqueResultException: query did not return a unique result: 6
+	at tqs.airQuality.repository.CountryRepositoryTest.whenFindByName_thenReturnCountry(CountryRepositoryTest.java:41)
+
