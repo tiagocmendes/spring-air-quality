@@ -25,7 +25,7 @@ import java.util.Map;
 public class RegionService {
 
     private long TIME_TO_LIVE = 120;
-    private long TIMER = 120;
+    private long TIMER = 60;
     private Cache<String, Region> regionCache = new Cache<>(TIME_TO_LIVE, TIMER);
 
     public Region getResponse(String uri) throws IOException, URISyntaxException {

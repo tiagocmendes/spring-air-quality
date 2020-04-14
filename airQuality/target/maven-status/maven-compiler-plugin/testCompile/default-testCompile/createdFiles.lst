@@ -1,12 +1,13 @@
-tqs/airQuality/repository/CountryRepositoryTest.class
 tqs/airQuality/AirQualityApplicationTests.class
 tqs/airQuality/service/ContinentServiceTest.class
 tqs/airQuality/controller/RegionControllerTest.class
 tqs/airQuality/controller/ContinentControllerTest.class
 tqs/airQuality/service/CountryServiceTest.class
+tqs/airQuality/cache/CacheTest$1.class
+tqs/airQuality/integration/RegionRestControllerTemplateIT.class
+tqs/airQuality/cache/CacheTest.class
+tqs/airQuality/repository/CountryRepositoryTest.class
 tqs/airQuality/repository/ContinentRepositoryTest.class
 tqs/airQuality/controller/CountryControllerTest.class
-tqs/airQuality/cache/CacheTest$1.class
 tqs/airQuality/repository/RegionRepositoryTest.class
 tqs/airQuality/service/RegionServiceTest.class
-tqs/airQuality/cache/CacheTest.class
