@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: tqs.airQuality.repository.ContinentRepositoryTest
 -------------------------------------------------------------------------------
-Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.173 s - in tqs.airQuality.repository.ContinentRepositoryTest
+Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.474 s - in tqs.airQuality.repository.ContinentRepositoryTest

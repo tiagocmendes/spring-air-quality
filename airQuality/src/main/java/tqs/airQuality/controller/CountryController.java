@@ -7,6 +7,7 @@ import tqs.airQuality.model.Country;
 import tqs.airQuality.service.CountryService;
 
 import javax.validation.Valid;
+import java.io.IOException;
 import java.util.List;
 
 @RestController
@@ -17,7 +18,7 @@ public class CountryController {
 
 
     @GetMapping("/countries")
-    public List<Country> getAllCountries() {
+    public List<Country> getAllCountries() throws IOException {
         return countryService.getAllCountries();
     }
 

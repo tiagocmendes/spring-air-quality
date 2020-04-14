@@ -14,6 +14,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import tqs.airQuality.model.Continent;
 import tqs.airQuality.repository.ContinentRepository;
 
+import java.io.IOException;
 import java.util.Arrays;
 
 @ExtendWith(MockitoExtension.class)
@@ -42,17 +43,9 @@ public class ContinentServiceTest {
         c3 = new Continent("AFRICA");
     }
 
-    @Test
-    public void findAll_WhenNoRecordTest() {
-
-        Mockito.when(continentRepository.findAll()).thenReturn(Arrays.asList());
-        assertEquals(0, continentService.getAllContinents().size());
-        Mockito.verify(continentRepository, Mockito.times(1)).findAll();
-
-    }
 
     @Test
-    public void findAll_WhenRecordsTest() {
+    public void findAll_WhenRecordsTest() throws IOException {
         Mockito.when(continentRepository.findAll()).thenReturn(Arrays.asList(c1,c2,c3));
         assertEquals(Arrays.asList(c1,c2,c3), continentService.getAllContinents());
         assertEquals(3, continentService.getAllContinents().size());
