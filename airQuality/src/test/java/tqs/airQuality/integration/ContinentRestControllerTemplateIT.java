@@ -40,7 +40,7 @@ public class ContinentRestControllerTemplateIT {
     }
 
     @Test
-    public void getAllCountriesTestIT() {
+    public void getAllContinentsTestIT() {
         ResponseEntity<ArrayList> response = this.restTemplate.getForEntity("http://127.0.0.1:" + port + "/continents", ArrayList.class);
         assertEquals(HttpStatus.OK, response.getStatusCode());
         assertNotEquals(null, response.getBody());
