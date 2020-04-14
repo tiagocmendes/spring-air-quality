@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ContinentController.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">airQuality</a> &gt; <a href="index.source.html" class="el_package">tqs.airQuality.controller</a> &gt; <span class="el_source">ContinentController.java</span></div><h1>ContinentController.java</h1><pre class="source lang-java linenums">package tqs.airQuality.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+
+import tqs.airQuality.cache.Cache;
+import tqs.airQuality.model.Continent;
+import tqs.airQuality.model.Country;
+import tqs.airQuality.repository.ContinentRepository;
+
+import javax.validation.Valid;
+import java.util.List;
+import java.util.Map;
+
+@RestController
+<span class="nc" id="L19">public class ContinentController {</span>
+
+    @Autowired
+    ContinentRepository continentRepository;
+
+<span class="nc" id="L24">    private static long TIME_TO_LIVE = 120;</span>
+<span class="nc" id="L25">    private static long TIMER = 120;</span>
+<span class="nc" id="L26">    private static Cache&lt;String, List&lt;Continent&gt;&gt; continentCache = new Cache&lt;&gt;(TIME_TO_LIVE, TIMER);</span>
+
+    @GetMapping(&quot;/continents&quot;)
+    public List&lt;Continent&gt; getAllContinents() {
+
+<span class="nc" id="L31">        List&lt;Continent&gt; allContinents = continentCache.get(&quot;allContinents&quot;);</span>
+
+<span class="nc bnc" id="L33" title="All 2 branches missed.">        if(allContinents == null) {</span>
+<span class="nc" id="L34">            allContinents = continentRepository.findAll();</span>
+<span class="nc" id="L35">            continentCache.put(&quot;allContinents&quot;, allContinents);</span>
+        }
+
+<span class="nc" id="L38">        return allContinents;</span>
+    }
+
+    @PostMapping(&quot;/continents&quot;)
+    public Continent createContinent(@Valid @RequestBody Continent continent) {
+<span class="nc" id="L43">        return continentRepository.save(continent);</span>
+    }
+
+    @GetMapping(&quot;/continents/cache&quot;)
+    public Map&lt;String, Object&gt; getCacheDetails() {
+<span class="nc" id="L48">        return continentCache.getDetails();</span>
+    }
+
+
+<span class="nc" id="L52">    public Cache&lt;String, List&lt;Continent&gt;&gt; getContinentCache() { return continentCache; }</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

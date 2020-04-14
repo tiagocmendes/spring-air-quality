@@ -2,7 +2,6 @@ package tqs.airQuality.controller;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import org.json.JSONObject;
 import org.junit.Before;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -12,15 +11,11 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 import org.mockito.junit.jupiter.MockitoExtension;
-import tqs.airQuality.cache.Cache;
 import tqs.airQuality.model.Continent;
-import tqs.airQuality.model.Region;
-import tqs.airQuality.repository.ContinentRepository;
+import tqs.airQuality.service.ContinentService;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 @ExtendWith(MockitoExtension.class)
 public class ContinentControllerTest {
@@ -31,7 +26,7 @@ public class ContinentControllerTest {
 
 
     @Mock
-    private ContinentRepository continentRepository;
+    private ContinentService continentService;
 
     @InjectMocks
     private ContinentController continentController;
@@ -51,15 +46,15 @@ public class ContinentControllerTest {
     @Test
     public void getAllContinentsNotInCache() {
         List<Continent> allContinents = new ArrayList<>();
-        Mockito.when(continentRepository.findAll()).thenReturn(allContinents);
+        Mockito.when(continentService.getAllContinents()).thenReturn(allContinents);
         assertEquals(continentController.getAllContinents(), allContinents);
-        Mockito.verify(continentRepository, Mockito.times(1)).findAll();
+        Mockito.verify(continentService, Mockito.times(1)).getAllContinents();
     }
 
     @Test
     void createContinent() {
         continentController.createContinent(c1);
-        Mockito.verify(continentRepository, Mockito.times(1)).save(c1);
+        Mockito.verify(continentService, Mockito.times(1)).createContinent(c1);
     }
 
 }

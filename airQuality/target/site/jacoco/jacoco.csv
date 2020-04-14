@@ -1,0 +1,16 @@
+GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
+airQuality,tqs.airQuality.cache,Cache,314,0,14,0,71,0,22,0,15,0
+airQuality,tqs.airQuality.cache,Cache.new Runnable() {...},20,0,0,0,4,0,2,0,2,0
+airQuality,tqs.airQuality.cache,Cache.CacheObject,12,0,0,0,4,0,1,0,1,0
+airQuality,tqs.airQuality.exception,RegionNotFoundException,12,0,0,0,2,0,1,0,1,0
+airQuality,tqs.airQuality.http,AirQualityHttpClient,41,0,0,0,11,0,2,0,2,0
+airQuality,tqs.airQuality.controller,ContinentController,42,0,2,0,12,0,7,0,6,0
+airQuality,tqs.airQuality.controller,RegionController,40,0,4,0,12,0,6,0,4,0
+airQuality,tqs.airQuality.controller,CountryController,82,0,8,0,21,0,10,0,6,0
+airQuality,tqs.airQuality,AirQualityApplication.new WebMvcConfigurer() {...},22,0,0,0,4,0,2,0,2,0
+airQuality,tqs.airQuality,AirQualityApplication,13,0,0,0,4,0,3,0,3,0
+airQuality,tqs.airQuality.service,RegionService,183,0,8,0,39,0,9,0,5,0
+airQuality,tqs.airQuality.converter,JSONObjectConverter,23,0,0,0,11,0,3,0,3,0
+airQuality,tqs.airQuality.model,Region,327,0,36,0,79,0,44,0,26,0
+airQuality,tqs.airQuality.model,Country,58,0,0,0,24,0,11,0,11,0
+airQuality,tqs.airQuality.model,Continent,26,0,0,0,12,0,7,0,7,0
