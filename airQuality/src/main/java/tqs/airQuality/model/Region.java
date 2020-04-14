@@ -188,4 +188,26 @@ public class Region {
     public void setTimeZone(String timeZone) {
         this.timeZone = timeZone;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Region)) return false;
+        Region region = (Region) o;
+        return Objects.equals(id, region.id) &&
+                Objects.equals(name, region.name) &&
+                Objects.equals(latitude, region.latitude) &&
+                Objects.equals(longitude, region.longitude) &&
+                Objects.equals(url, region.url) &&
+                Objects.equals(aqi, region.aqi) &&
+                Objects.equals(primaryPollutant, region.primaryPollutant) &&
+                Objects.equals(time, region.time) &&
+                Objects.equals(timeZone, region.timeZone) &&
+                Objects.equals(pollutants, region.pollutants);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, latitude, longitude, url, aqi, primaryPollutant, time, timeZone, pollutants);
+    }
 }

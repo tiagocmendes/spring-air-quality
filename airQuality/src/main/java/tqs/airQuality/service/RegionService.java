@@ -1,5 +1,7 @@
 package tqs.airQuality.service;
 
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import tqs.airQuality.cache.Cache;
 import tqs.airQuality.http.AirQualityHttpClient;
 import tqs.airQuality.http.HttpClient;
@@ -18,13 +20,15 @@ import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 
+@Service
+@Transactional
 public class RegionService {
 
-    private static long TIME_TO_LIVE = 120;
-    private static long TIMER = 120;
-    private static Cache<String, Region> regionCache = new Cache<>(TIME_TO_LIVE, TIMER);
+    private long TIME_TO_LIVE = 120;
+    private long TIMER = 120;
+    private Cache<String, Region> regionCache = new Cache<>(TIME_TO_LIVE, TIMER);
 
-    public static Region getResponse(String uri) throws IOException, URISyntaxException {
+    public Region getResponse(String uri) throws IOException, URISyntaxException {
         HttpClient httpClient = new AirQualityHttpClient();
         URIBuilder uriBuilder = new URIBuilder(uri);
         String response = httpClient.get(uriBuilder.build().toString());
@@ -69,7 +73,7 @@ public class RegionService {
         }
     }
 
-    public static Region getRegionByName(String name) throws IOException, URISyntaxException {
+    public Region getRegionByName(String name) throws IOException, URISyntaxException {
 
         Region region = regionCache.get(name);
 
@@ -83,7 +87,7 @@ public class RegionService {
         return region;
     }
 
-    public static Region getRegionByCurrentLocation() throws IOException, URISyntaxException {
+    public Region getRegionByCurrentLocation() throws IOException, URISyntaxException {
 
         String currentLocation = "currentLocation";
         Region region = regionCache.get(currentLocation);
@@ -98,7 +102,7 @@ public class RegionService {
         return region;
     }
 
-    public static Map<String, Object> getCacheDetails() {
+    public Map<String, Object> getCacheDetails() {
         return regionCache.getDetails();
     }
 }

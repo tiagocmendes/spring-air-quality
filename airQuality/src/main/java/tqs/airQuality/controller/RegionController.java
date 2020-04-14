@@ -29,11 +29,13 @@ public class RegionController {
     @Autowired
     RegionRepository regionRepository;
 
+    @Autowired
+    RegionService regionService;
 
     @GetMapping("/regions/{name}")
     public List<Region> getRegionByName(@PathVariable(value = "name") String name) throws IOException, URISyntaxException {
         List<Region> regionList = new ArrayList<>();
-        Region region = RegionService.getRegionByName(name);
+        Region region = regionService.getRegionByName(name);
         if(region != null)
             regionList.add(region);
         return regionList;
@@ -41,10 +43,10 @@ public class RegionController {
 
 
     @GetMapping("/here")
-    public List<Region> getRegionByCurrentLocation(HttpServletRequest request) throws IOException, URISyntaxException {
+    public List<Region> getRegionByCurrentLocation() throws IOException, URISyntaxException {
          // System.out.println(request.getRemoteAddr());
         List<Region> regionList = new ArrayList<>();
-        Region region = RegionService.getRegionByCurrentLocation();
+        Region region = regionService.getRegionByCurrentLocation();
         if(region != null)
             regionList.add(region);
         return regionList;
@@ -52,6 +54,6 @@ public class RegionController {
 
     @GetMapping("/regions/cache")
     public Map<String, Object> getCacheDetails() {
-        return RegionService.getCacheDetails();
+        return regionService.getCacheDetails();
     }
 }
