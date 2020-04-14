@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="tqs.airQuality.service.CountryServiceTest" time="0.117" tests="5" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="tqs.airQuality.cache.CacheTest" time="10.06" tests="11" errors="0" skipped="0" failures="0">
   <properties>
     <property name="awt.toolkit" value="sun.awt.X11.XToolkit"/>
     <property name="file.encoding.pkg" value="sun.io"/>
@@ -59,9 +59,15 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="52.0"/>
   </properties>
-  <testcase name="findCountriesByName_WhenNoRecordsTest" classname="tqs.airQuality.service.CountryServiceTest" time="0.097"/>
-  <testcase name="createCountriesTest" classname="tqs.airQuality.service.CountryServiceTest" time="0.004"/>
-  <testcase name="findAll_WhenRecordsTest" classname="tqs.airQuality.service.CountryServiceTest" time="0.004"/>
-  <testcase name="findCountriesByName_WhenRecordsTest" classname="tqs.airQuality.service.CountryServiceTest" time="0.003"/>
-  <testcase name="findAll_WhenNoRecordTest" classname="tqs.airQuality.service.CountryServiceTest" time="0.002"/>
+  <testcase name="hitsTest" classname="tqs.airQuality.cache.CacheTest" time="0"/>
+  <testcase name="objectExpiredTest" classname="tqs.airQuality.cache.CacheTest" time="9.936"/>
+  <testcase name="putTest" classname="tqs.airQuality.cache.CacheTest" time="0.002"/>
+  <testcase name="missesTest" classname="tqs.airQuality.cache.CacheTest" time="0.015"/>
+  <testcase name="getTest" classname="tqs.airQuality.cache.CacheTest" time="0.003"/>
+  <testcase name="clean" classname="tqs.airQuality.cache.CacheTest" time="0.013"/>
+  <testcase name="cacheInstanceTest" classname="tqs.airQuality.cache.CacheTest" time="0"/>
+  <testcase name="sizeTest" classname="tqs.airQuality.cache.CacheTest" time="0.011"/>
+  <testcase name="removeTest" classname="tqs.airQuality.cache.CacheTest" time="0.022"/>
+  <testcase name="requestsTest" classname="tqs.airQuality.cache.CacheTest" time="0.003"/>
+  <testcase name="objectNotExpiredTest" classname="tqs.airQuality.cache.CacheTest" time="0.027"/>
 </testsuite>
