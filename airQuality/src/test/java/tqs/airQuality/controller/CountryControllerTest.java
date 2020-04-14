@@ -9,13 +9,9 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.springframework.web.bind.annotation.RequestBody;
-import tqs.airQuality.model.Continent;
 import tqs.airQuality.model.Country;
-import tqs.airQuality.service.ContinentService;
 import tqs.airQuality.service.CountryService;
 
-import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
 

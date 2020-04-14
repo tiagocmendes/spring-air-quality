@@ -18,7 +18,6 @@ import tqs.airQuality.repository.ContinentRepository;
 import java.util.Arrays;
 
 @ExtendWith(MockitoExtension.class)
-@SpringBootTest
 public class ContinentServiceTest {
 
     private static Continent c1;
@@ -41,15 +40,31 @@ public class ContinentServiceTest {
         System.out.println("@BeforeAll - ContinentServiceTest initiated");
         c1 = new Continent("EUROPE");
         c2 = new Continent("AMERICA");
+        c3 = new Continent("AFRICA");
     }
 
     @Test
-    public void findAllTest_WhenNoRecord() {
+    public void findAll_WhenNoRecordTest() {
 
         Mockito.when(continentRepository.findAll()).thenReturn(Arrays.asList());
         assertEquals(0, continentService.getAllContinents().size());
         Mockito.verify(continentRepository, Mockito.times(1)).findAll();
 
+    }
+
+    @Test
+    public void findAll_WhenRecordsTest() {
+        Mockito.when(continentRepository.findAll()).thenReturn(Arrays.asList(c1,c2,c3));
+        assertEquals(Arrays.asList(c1,c2,c3), continentService.getAllContinents());
+        assertEquals(3, continentService.getAllContinents().size());
+        Mockito.verify(continentRepository, Mockito.times(2)).findAll();
+    }
+
+    @Test
+    public void createNewContinentTest() {
+        Mockito.when(continentRepository.save(c1)).thenReturn(c1);
+        assertEquals(c1, continentService.createContinent(c1));
+        Mockito.verify(continentRepository, Mockito.times(1)).save(c1);
     }
 
 }
