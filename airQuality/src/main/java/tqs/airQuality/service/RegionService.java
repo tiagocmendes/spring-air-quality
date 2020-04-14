@@ -75,13 +75,13 @@ public class RegionService {
 
     public Region getRegionByName(String name) throws IOException, URISyntaxException {
 
-        Region region = regionCache.get(name);
+        Region region = regionCache.get(name.toLowerCase());
 
         if(region == null) {
             region = getResponse("https://api.waqi.info/feed/" + name);
 
             if(region != null)
-                regionCache.put(name, region);
+                regionCache.put(name.toLowerCase(), region);
         }
 
         return region;

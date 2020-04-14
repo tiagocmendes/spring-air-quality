@@ -70,7 +70,7 @@ public class CountryControllerTest {
     }
 
     @Test
-    public void whenNotEmptyTable_getCountriesByContinent() {
+    public void whenNotEmptyTable_getCountriesByContinent() throws IOException {
         List<Country> allCountries = new ArrayList<>();
         allCountries.add(c1);
         allCountries.add(c2);

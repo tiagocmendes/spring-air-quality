@@ -23,7 +23,7 @@ public class CountryController {
     }
 
     @GetMapping("/countries/{continent}")
-    public List<Country> getCountriesByContinent(@PathVariable(value = "continent") String continent) {
+    public List<Country> getCountriesByContinent(@PathVariable(value = "continent") String continent) throws IOException {
         return countryService.getCountriesByContinent(continent);
     }
 

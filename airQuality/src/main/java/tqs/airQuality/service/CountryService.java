@@ -37,8 +37,10 @@ public class CountryService {
         return allCountries;
     }
 
-    public List<Country> getCountriesByContinent(String continent) {
+    public List<Country> getCountriesByContinent(String continent) throws IOException {
         List<Country> allCountries = countryRepository.findAll();
+        if (allCountries.isEmpty())
+            allCountries = this.getAllCountries();
         List<Country> countriesByContinent = new ArrayList<>();
         for(Country c : allCountries) {
             if(c.getContinent().toLowerCase().equals(continent.toLowerCase())) {
