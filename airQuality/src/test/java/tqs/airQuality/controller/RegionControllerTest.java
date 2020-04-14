@@ -41,16 +41,12 @@ public class RegionControllerTest {
 
     @Before
     public void setUp() {
-
         MockitoAnnotations.initMocks(this);
     }
 
     @BeforeAll
     public static void init() {
         r1 = new Region("Region1",(double) -40.0, (double) 8.0, "url", 10, "co2", new JSONObject(), "2020-04-15", "GMT+2");
-        r2 = new Region("Region2",(double) -40.0, (double) 8.0, "url", 10, "co2", new JSONObject(), "2020-04-15", "GMT+2");
-        r3 = new Region("Region3",(double) -40.0, (double) 8.0, "url", 10, "co2", new JSONObject(), "2020-04-15", "GMT+2");
-
     }
 
     @Test

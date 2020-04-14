@@ -48,4 +48,7 @@ public class ContinentController {
         return continentCache.getDetails();
     }
 
+
+    public Cache<String, List<Continent>> getContinentCache() { return continentCache; }
+
 }
