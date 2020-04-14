@@ -14,6 +14,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import tqs.airQuality.model.Continent;
 import tqs.airQuality.service.ContinentService;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -44,7 +45,7 @@ public class ContinentControllerTest {
     }
 
     @Test
-    public void whenEmptyTable_getAllContinentsTest() {
+    public void whenEmptyTable_getAllContinentsTest() throws IOException  {
         List<Continent> allContinents = new ArrayList<>();
         Mockito.when(continentService.getAllContinents()).thenReturn(allContinents);
         assertEquals(continentController.getAllContinents(), allContinents);
@@ -52,7 +53,7 @@ public class ContinentControllerTest {
     }
 
     @Test
-    public void whenNotEmptyTable_getAllContinentsTest() {
+    public void whenNotEmptyTable_getAllContinentsTest() throws IOException {
         List<Continent> allContinents = new ArrayList<>();
         allContinents.add(c1);
         allContinents.add(c2);

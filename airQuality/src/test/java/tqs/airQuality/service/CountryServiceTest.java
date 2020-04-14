@@ -13,7 +13,9 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import tqs.airQuality.model.Country;
 import tqs.airQuality.repository.CountryRepository;
 
+import java.io.IOException;
 import java.util.Arrays;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -43,17 +45,9 @@ public class CountryServiceTest {
         c3 = new Country("Country3", "ContinentB", "Flag3");
     }
 
+    
     @Test
-    public void findAll_WhenNoRecordTest() {
-
-        Mockito.when(countryRepository.findAll()).thenReturn(Arrays.asList());
-        assertEquals(0, countryService.getAllCountries().size());
-        Mockito.verify(countryRepository, Mockito.times(1)).findAll();
-
-    }
-
-    @Test
-    public void findAll_WhenRecordsTest() {
+    public void findAll_WhenRecordsTest() throws IOException {
         Mockito.when(countryRepository.findAll()).thenReturn(Arrays.asList(c1,c2,c3));
         assertEquals(Arrays.asList(c1,c2,c3), countryService.getAllCountries());
         assertEquals(3, countryService.getAllCountries().size());
