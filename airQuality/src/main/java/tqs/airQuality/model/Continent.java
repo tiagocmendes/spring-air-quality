@@ -10,7 +10,7 @@ import javax.validation.constraints.NotBlank;
 
 @Entity
 @Table(name = "continents")
-public abstract class Continent {
+public class Continent {
 
     @Id
     @GeneratedValue
