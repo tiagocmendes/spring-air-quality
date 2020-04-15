@@ -172,13 +172,5 @@
 			</build>
 		</profile>
 	</profiles>
-	<distributionManagement>
-  
-	  <repository>
-	    <id>github</id>
-	    <name>airQuality REST API</name>
-	    <url>https://maven.pkg.github.com/wkrzywiec/NoticeBoard</url> 
-	  </repository>
-	</distributionManagement>
 
 </project>
