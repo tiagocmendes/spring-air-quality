@@ -1,4 +1,0 @@
--------------------------------------------------------------------------------
-Test set: tqs.airQuality.repository.RegionRepositoryTest
--------------------------------------------------------------------------------
-Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 2.632 s - in tqs.airQuality.repository.RegionRepositoryTest
