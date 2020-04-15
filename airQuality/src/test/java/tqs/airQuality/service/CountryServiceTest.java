@@ -67,5 +67,5 @@ public class CountryServiceTest {
         assertEquals(Arrays.asList(c1,c2), countryService.getCountriesByContinent("ContinentA"));
         Mockito.verify(countryRepository, Mockito.times(1)).findAll();
     }
-    
+
 }
