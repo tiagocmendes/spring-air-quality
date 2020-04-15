@@ -1,5 +1,7 @@
 package tqs.airQuality.model;
 
+import tqs.airQuality.repository.ContinentRepository;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -8,7 +10,7 @@ import javax.validation.constraints.NotBlank;
 
 @Entity
 @Table(name = "continents")
-public class Continent {
+public abstract class Continent {
 
     @Id
     @GeneratedValue
