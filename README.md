@@ -78,4 +78,4 @@ Check the React web application [here.](https://github.com/tiagocmendes/react-ai
 
 # License
 
-This project is licensed under the MIT License - see the [LICENSE](https://github.com/tiagocmendes/react-air-quality/blob/master/LICENSE) file for details.
+This project is licensed under the MIT License - see the [LICENSE](https://github.com/tiagocmendes/spring-air-quality/blob/master/LICENSE.md) file for details.
